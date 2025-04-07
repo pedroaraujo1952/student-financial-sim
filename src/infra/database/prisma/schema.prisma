@@ -1,0 +1,29 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["postgresqlExtensions"]
+}
+
+datasource db {
+  provider   = "postgresql"
+  url        = env("DATABASE_URL")
+  extensions = [uuid_ossp(map: "uuid-ossp")]
+}
+
+model FinancialSimulation {
+  id               String  @id
+  studentId        Int
+  totalValue       Decimal @db.Decimal(19, 4)
+  installmentCount Int
+  interestRate     Decimal @db.Decimal(5, 4)
+  installmentValue Decimal @db.Decimal(19, 4)
+  Student          Student @relation(fields: [studentId], references: [id])
+}
+
+model Student {
+  id                  Int                   @id @default(autoincrement())
+  firstName           String
+  lastName            String
+  email               String                @unique
+  password            String
+  FinancialSimulation FinancialSimulation[]
+}
