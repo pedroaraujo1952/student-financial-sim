@@ -5,12 +5,13 @@ import { StudentsRepository } from "../contracts/StudentRepository";
 import { CreateStudentService } from "../services/CreateStudentService";
 import { HashProvider } from "../contracts/HashProvider";
 import { BcryptProvider } from "../infra/providers/HashProvider/implementations/bcrypt.provider";
-import { SessionController } from "../controllers/SessionController";
+import { SessionController } from "../controllers/Session/SessionController";
 import { TYPES } from "../constants/types";
 import { JwtProvider } from "../infra/providers/AuthProvider/implementations/jwt.provider";
 import { AuthProvider } from "../contracts/AuthProvider";
 import { AuthenticateStudentService } from "../services/AuthenticateStudentService";
-import { StudentController } from "../controllers/StudentController";
+import { StudentController } from "../controllers/Student/StudentController";
+import { UpdateStudentService } from "../services/UpdateStudentService";
 
 const container = new Container();
 
@@ -30,6 +31,9 @@ container
 container
   .bind<AuthenticateStudentService>(TYPES.AuthenticateStudentService)
   .to(AuthenticateStudentService);
+container
+  .bind<UpdateStudentService>(TYPES.UpdateStudentService)
+  .to(UpdateStudentService);
 
 // Controllers
 container

@@ -1,4 +1,3 @@
-// src/types.ts
 export const TYPES = {
   StudentsRepository: Symbol.for("StudentsRepository"),
   HashProvider: Symbol.for("HashProvider"),
@@ -7,4 +6,5 @@ export const TYPES = {
   StudentController: Symbol.for("StudentController"),
   AuthProvider: Symbol.for("AuthProvider"),
   AuthenticateStudentService: Symbol.for("AuthenticateStudentService"),
+  UpdateStudentService: Symbol.for("UpdateStudentService"),
 };

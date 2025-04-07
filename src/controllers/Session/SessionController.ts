@@ -1,9 +1,9 @@
 // src/controllers/SessionController.ts
 import { NextFunction, Request, Response } from "express";
 import { inject, injectable } from "inversify";
-import { CreateStudentService } from "../services/CreateStudentService";
-import { TYPES } from "../constants/types";
-import { AuthenticateStudentService } from "../services/AuthenticateStudentService";
+import { CreateStudentService } from "../../services/CreateStudentService";
+import { TYPES } from "../../constants/types";
+import { AuthenticateStudentService } from "../../services/AuthenticateStudentService";
 
 @injectable()
 export class SessionController {
