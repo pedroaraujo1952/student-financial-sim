@@ -20,9 +20,9 @@ export class StudentController {
 
   async show(req: Request, res: Response, next: NextFunction) {
     try {
-      // const student = await this.createStudent.execute(req.body);
+      const user = req.user;
 
-      res.status(200).json({});
+      res.status(200).json(user);
     } catch (error) {
       next(error);
     }

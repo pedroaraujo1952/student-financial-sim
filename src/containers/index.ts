@@ -10,6 +10,7 @@ import { TYPES } from "../constants/types";
 import { JwtProvider } from "../infra/providers/AuthProvider/implementations/jwt.provider";
 import { AuthProvider } from "../contracts/AuthProvider";
 import { AuthenticateStudentService } from "../services/AuthenticateStudentService";
+import { StudentController } from "../controllers/StudentController";
 
 const container = new Container();
 
@@ -34,5 +35,8 @@ container
 container
   .bind<SessionController>(TYPES.SessionController)
   .to(SessionController);
+container
+  .bind<StudentController>(TYPES.StudentController)
+  .to(StudentController);
 
 export default container;
