@@ -32,6 +32,14 @@ docker-compose up
 
 Abra o navegador e acesse [http://localhost:3000](http://localhost:3000).
 
+## Testando a API com Postman
+
+Para testar os endpoints da API, utilize o arquivo `postman_collection.json` disponível na raiz do projeto. Siga os passos abaixo:
+
+1. Importe o arquivo `postman_collection.json` no Postman.
+2. Certifique-se de que a aplicação está em execução.
+3. Execute as requisições disponíveis na collection para validar os endpoints.
+
 ## Scripts adicionais
 
 - **Parar os containers**:

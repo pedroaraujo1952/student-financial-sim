@@ -1,0 +1,182 @@
+{
+  "info": {
+    "_postman_id": "8dabe16a-70e4-4f8e-84b5-b3b55cb7c2c6",
+    "name": "StudentFinancialSim",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "41307277"
+  },
+  "item": [
+    {
+      "name": "Register",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"firstName\": \"Pedro\",\r\n    \"lastName\": \"Araujo\",\r\n    \"email\": \"pedroaraujo@email.com\",\r\n    \"password\": \"Teste@teste123\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/register",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "register"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Login",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"email\": \"pedroaraujo@email.com\",\r\n    \"password\": \"Teste@teste123\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/login",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "login"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Me",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJJZCI6Mn0sImlhdCI6MTc0NDA3NTEzNCwiZXhwIjoxNzQ0MDkzMTM0fQ.m3SRz0vqxwhrHDBofTfbzpNIITWaYM9YSOKtGCLF1R4",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/api/me",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "me"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Me",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJJZCI6Mn0sImlhdCI6MTc0NDA1MjMxMSwiZXhwIjoxNzQ0MDUyNjExfQ.AnZO_viMp0SGths1xhjhQ5hm8dwnneEK9R4JQUY-MEc",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"firstName\": \"Pedro Atualizado\",\r\n    \"lastName\": \"Araujo Atualizado\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/me",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "me"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Simulations",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJJZCI6Mn0sImlhdCI6MTc0NDA3NTEzNCwiZXhwIjoxNzQ0MDkzMTM0fQ.m3SRz0vqxwhrHDBofTfbzpNIITWaYM9YSOKtGCLF1R4",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/api/simulations?limit=1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "simulations"],
+          "query": [
+            {
+              "key": "limit",
+              "value": "1"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create Simulation",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJJZCI6Mn0sImlhdCI6MTc0NDA3NTEzNCwiZXhwIjoxNzQ0MDkzMTM0fQ.m3SRz0vqxwhrHDBofTfbzpNIITWaYM9YSOKtGCLF1R4",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"installmentCount\": 5,\r\n    \"totalValue\": \"1000\",\r\n    \"interestRate\": \"2\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/simulations",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "simulations"]
+        }
+      },
+      "response": []
+    }
+  ]
+}
