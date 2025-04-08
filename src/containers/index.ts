@@ -12,6 +12,11 @@ import { AuthProvider } from "../contracts/AuthProvider";
 import { AuthenticateStudentService } from "../services/AuthenticateStudentService";
 import { StudentController } from "../controllers/Student/StudentController";
 import { UpdateStudentService } from "../services/UpdateStudentService";
+import { FinancialSimulationController } from "../controllers/FinancialSimulation/FinancialSimulationController";
+import { FinancialSimulationsRepository } from "../contracts/FinancialSimulationsRepository";
+import { PrismaFinancialSimulationsRepository } from "../infra/repositories/PrismaFinancialSimulationRepository";
+import { ListFinancialSimulationsService } from "../services/ListFinancialSimulationsService";
+import { SimulateFinancialInvestment } from "../services/SimulateFinancialInvestmentService";
 
 const container = new Container();
 
@@ -19,6 +24,9 @@ const container = new Container();
 container
   .bind<StudentsRepository>(TYPES.StudentsRepository)
   .to(PrismaStudentsRepository);
+container
+  .bind<FinancialSimulationsRepository>(TYPES.FinancialSimulationsRepository)
+  .to(PrismaFinancialSimulationsRepository);
 
 // Providers
 container.bind<HashProvider>(TYPES.HashProvider).to(BcryptProvider);
@@ -34,6 +42,12 @@ container
 container
   .bind<UpdateStudentService>(TYPES.UpdateStudentService)
   .to(UpdateStudentService);
+container
+  .bind<ListFinancialSimulationsService>(TYPES.ListFinancialSimulationsService)
+  .to(ListFinancialSimulationsService);
+container
+  .bind<SimulateFinancialInvestment>(TYPES.SimulateFinancialInvestmentService)
+  .to(SimulateFinancialInvestment);
 
 // Controllers
 container
@@ -42,5 +56,8 @@ container
 container
   .bind<StudentController>(TYPES.StudentController)
   .to(StudentController);
+container
+  .bind<FinancialSimulationController>(TYPES.FinancialSimulationController)
+  .to(FinancialSimulationController);
 
 export default container;

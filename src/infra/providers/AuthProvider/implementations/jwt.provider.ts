@@ -18,8 +18,8 @@ interface JwtUserPayload {
 
 @injectable()
 export class JwtProvider implements AuthProvider {
-  private readonly DEFAULT_EXPIRATION_TIME = "5m";
-  private readonly authSecret;
+  private readonly DEFAULT_EXPIRATION_TIME = "5h";
+  private readonly authSecret: string;
 
   constructor(
     @inject(TYPES.StudentsRepository)

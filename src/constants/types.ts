@@ -7,4 +7,12 @@ export const TYPES = {
   AuthProvider: Symbol.for("AuthProvider"),
   AuthenticateStudentService: Symbol.for("AuthenticateStudentService"),
   UpdateStudentService: Symbol.for("UpdateStudentService"),
+  FinancialSimulationController: Symbol.for("FinancialSimulationController"),
+  FinancialSimulationsRepository: Symbol.for("FinancialSimulationsRepository"),
+  SimulateFinancialInvestmentService: Symbol.for(
+    "SimulateFinancialInvestmentService"
+  ),
+  ListFinancialSimulationsService: Symbol.for(
+    "ListFinancialSimulationsService"
+  ),
 };

@@ -1,4 +1,4 @@
-export class Student {
+export abstract class Student {
   constructor(
     public readonly id: number,
     public readonly firstName: string,
