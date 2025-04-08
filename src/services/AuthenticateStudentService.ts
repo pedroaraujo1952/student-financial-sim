@@ -4,6 +4,7 @@ import { StudentsRepository } from "../contracts/StudentRepository";
 import { Student } from "../entities/Student";
 import { HashProvider } from "../contracts/HashProvider";
 import { AuthProvider } from "../contracts/AuthProvider";
+import { UnauthorizedError } from "../controllers/shared/errors/UnauthorizedError";
 
 interface IResponse {
   token: string;
@@ -27,7 +28,7 @@ export class AuthenticateStudentService {
     const student = await this.studentRepository.findByEmail(email, true);
 
     if (!student || !student.password) {
-      throw new Error("Wrong email or password");
+      throw new UnauthorizedError();
     }
 
     const passwordMatched = this.hashProvider.compare(
@@ -36,7 +37,7 @@ export class AuthenticateStudentService {
     );
 
     if (!passwordMatched) {
-      throw new Error("Wrong email or password");
+      throw new UnauthorizedError();
     }
 
     const token = this.authProvider.generateToken(student.id);

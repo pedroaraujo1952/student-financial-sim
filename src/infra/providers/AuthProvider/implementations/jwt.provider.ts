@@ -4,13 +4,12 @@ import { AuthProvider } from "../../../../contracts/AuthProvider";
 import { TYPES } from "../../../../constants/types";
 import { StudentsRepository } from "../../../../contracts/StudentRepository";
 import { Student } from "../../../../entities/Student";
+import { UnauthorizedError } from "../../../../controllers/shared/errors/UnauthorizedError";
 
 interface JwtUserPayload {
   data: {
     userId: number;
-    // Include other fields that might be in your token
   };
-  // Common JWT fields
   iat?: number;
   exp?: number;
   iss?: string;
@@ -44,7 +43,7 @@ export class JwtProvider implements AuthProvider {
     const user = await this.studentRepository.findById(userId);
 
     if (!user) {
-      throw new Error("Unauthorized");
+      throw new UnauthorizedError();
     }
 
     return user;

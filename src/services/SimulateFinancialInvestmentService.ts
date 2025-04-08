@@ -5,6 +5,7 @@ import { TYPES } from "../constants/types";
 import { StudentsRepository } from "../contracts/StudentRepository";
 import Decimal from "decimal.js";
 import { FinancialSimulationsRepository } from "../contracts/FinancialSimulationsRepository";
+import { StudentNotFoundError } from "../controllers/Student/errors/StudentNotFoundError";
 
 interface IRequest
   extends Omit<ICreateFinancialSimulation, "installmentValue"> {}
@@ -26,7 +27,7 @@ export class SimulateFinancialInvestment {
     const student = await this.studentsRepository.findById(studentId);
 
     if (!student) {
-      throw new Error("Student not found");
+      throw new StudentNotFoundError();
     }
 
     const installmentValue = this.calculateCompoundInterest(

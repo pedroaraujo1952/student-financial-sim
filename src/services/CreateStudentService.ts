@@ -5,6 +5,7 @@ import { HashProvider } from "../contracts/HashProvider";
 import { Student } from "../entities/Student";
 import { ICreateStudentDTO } from "../dtos/Student/CreateStudentDTO";
 import { TYPES } from "../constants/types";
+import { StudentAlreadyExistsError } from "../controllers/Student/errors/StudentAlreadyExistsError";
 
 @injectable()
 export class CreateStudentService {
@@ -23,7 +24,7 @@ export class CreateStudentService {
   }: ICreateStudentDTO): Promise<Student> {
     const studentExists = await this.studentsRepository.findByEmail(email);
     if (studentExists) {
-      throw new Error("Student already exists");
+      throw new StudentAlreadyExistsError();
     }
 
     const hashedPassword = this.hashProvider.encrypt(password);

@@ -3,6 +3,7 @@ import { StudentsRepository } from "../contracts/StudentRepository";
 import { TYPES } from "../constants/types";
 import { IUpdateStudentDTO } from "../dtos/Student/UpdateStudentDTO";
 import { Student } from "../entities/Student";
+import { StudentNotFoundError } from "../controllers/Student/errors/StudentNotFoundError";
 
 @injectable()
 export class UpdateStudentService {
@@ -15,7 +16,7 @@ export class UpdateStudentService {
     const student = await this.studentRepository.findById(id);
 
     if (!student) {
-      throw new Error("Student not found");
+      throw new StudentNotFoundError();
     }
 
     return await this.studentRepository.update(id, {

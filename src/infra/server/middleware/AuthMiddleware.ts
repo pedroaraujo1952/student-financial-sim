@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import { AuthProvider } from "../../../contracts/AuthProvider";
 import { Student } from "../../../entities/Student";
+import { UnauthorizedError } from "../../../controllers/shared/errors/UnauthorizedError";
 
 declare global {
   namespace Express {
@@ -16,8 +17,7 @@ export function createAuthMiddleware(authProvider: AuthProvider) {
       const token = req.headers["authorization"]?.split(" ")[1];
 
       if (!token) {
-        res.status(401).json({ error: "Unauthorized" });
-        return;
+        throw new UnauthorizedError();
       }
 
       try {
@@ -27,12 +27,10 @@ export function createAuthMiddleware(authProvider: AuthProvider) {
 
         next();
       } catch (error) {
-        res.status(401).json({ error: "Unauthorized" });
-        return;
+        throw new UnauthorizedError();
       }
     } catch (error) {
-      res.status(500).json({ error: "Internal Server Error" });
-      return;
+      next(error);
     }
   };
 }
